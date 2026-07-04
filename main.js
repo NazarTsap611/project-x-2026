@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Укажи здесь год, месяц (ВНИМАНИЕ: от 0 до 11, где 0-янв, 6-июль) и день старта.
     // Пример для 5 июля 2026 года: new Date(2026, 6, 5)
     // ========================================================
-    const START_DATE = new Date(2026, 6, 1); // Поставь свою дату старта!
+    const START_DATE = new Date(2026, 6, 4); // Поставь свою дату старта!
     
     // Считаем текущий день квеста (1, 2, 3...) на основе текущей даты устройства
     const today = new Date();
@@ -66,6 +66,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+const rulesPopup = document.getElementById('rulesPopup');
+    const closeRulesBtn = document.getElementById('closeRulesBtn');
+
+    // Проверяем, есть ли запись в памяти телефона
+    if (!localStorage.getItem('questRulesAccepted')) {
+        // Если записи нет — показываем окно
+        rulesPopup.style.display = 'flex';
+    }
+
+    closeRulesBtn.addEventListener('click', () => {
+        // Прячем окно с красивым эффектом
+        rulesPopup.style.opacity = '0';
+        setTimeout(() => {
+            rulesPopup.style.display = 'none';
+        }, 300);
+        
+        // ЗАПИСЫВАЕМ В ПАМЯТЬ: больше не показывать!
+        localStorage.setItem('questRulesAccepted', 'true');
+    });
 
 // ЧИТ-КОД ДЛЯ РАЗРАБОТЧИКА (для тестов в консоли браузера):
 window.resetQuest = function() {

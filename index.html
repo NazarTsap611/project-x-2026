@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>7 Дней Воспоминаний</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<link rel="stylesheet" href="style.css?v=2"></head>
 <body>
-
+<div id="rulesPopup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h2>📜 Что это такое?</h2>
+            <p><b>Еще одна неделя не вместе. Звучит так себе, я знаю. Чтобы скрасить время ожидания, я придумал этот сайт для тебя! В течение 7 дней ты будешь получать по 1 заданию. Все они разные: есть очень сложные (как твои с нотами), а есть простые.</b></p>
+            <p>Каждый день я буду помнить о тебе, добавляя 1 задание, а ты обо мне — проходя их. Целую! 😘</p>
+            <br>
+            <p>1. <b>Внимательность:</b> Ответы могут быть спрятаны где угодно.</p>
+            <p>2. <b>Не жульничай:</b> Проходи дни строго по порядку.</p>
+            <p>3. <b>Звук на максимум:</b> В некоторых заданиях без него никак.</p>
+            <p>4. <b>Главное правило:</b> Улыбайся! 💖</p>
+            <button id="closeRulesBtn">Принять условия</button>
+        </div>
+    </div>
     <div class="hub-container">
         <h1>✨ Наше Путешествие</h1>
         <p class="hub-subtitle">Каждый день здесь будет открываться что-то особенное. Готова?</p>
-
         <div class="days-grid">
             <!-- День 1 всегда доступен изначально -->
             <a href="days/day1/index.html" class="day-card active" id="day1-link">

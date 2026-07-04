@@ -72,3 +72,60 @@ h1 {
     color: #aebac7;
     margin-top: 10px;
 }
+
+/* --- Стили для Pop-up окна (Строго поверх всего) --- */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(11, 15, 25, 0.92); /* Подходит под твой #0b0f19 */
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: #181f32; /* Под цвет твоих карточек */
+    border: 2px solid #ff79c6;
+    border-radius: 16px;
+    padding: 25px;
+    width: 90%;
+    max-width: 340px;
+    box-shadow: 0 0 30px rgba(255, 121, 198, 0.3);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.popup-content h2 {
+    color: #ff79c6;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 22px;
+    background: none;
+    -webkit-text-fill-color: #ff79c6; /* Убираем градиент для заголовка попапа */
+}
+
+.popup-content p {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+#closeRulesBtn {
+    margin-top: 15px;
+    background: linear-gradient(45deg, #ff79c6, #8be9fd);
+    color: #0b0f19;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(255, 121, 198, 0.3);
+}
