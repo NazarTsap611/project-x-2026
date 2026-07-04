@@ -40,6 +40,7 @@ drawOscilloscope(); // Инициализация линии
 
 function playBass(audioId, btn) {
     const audio = document.getElementById(audioId);
+    const log = document.getElementById('terminalLog');
 
     // Сброс всех кнопок
     document.querySelectorAll('.node-btn').forEach(b => {
@@ -52,13 +53,30 @@ function playBass(audioId, btn) {
     });
 
     if (audio.paused) {
-        audio.play();
-        btn.classList.add('playing');
-        currentAudio = audio;
+        // Пытаемся запустить музыку
+        let playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                // Если всё хорошо — включаем анимацию
+                btn.classList.add('playing');
+                currentAudio = audio;
+                log.style.color = "#00ff66";
+                log.innerText = `» Узел ${audioId.replace('audio', '')} активен. Анализ частот...`;
+            })
+            .catch(error => {
+                // Если браузер заблокировал или файла нет — выводим на экран!
+                log.style.color = "#da1b5b";
+                log.innerText = `» Ошибка аудио: ${error.message}`;
+                console.error("Audio error:", error);
+            });
+        }
     } else {
         audio.pause();
         btn.classList.remove('playing');
         currentAudio = null;
+        log.style.color = "#8b949e";
+        log.innerText = "» Воспроизведение остановлено.";
     }
 }
 

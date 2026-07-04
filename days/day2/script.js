@@ -13,11 +13,11 @@ const targetScore = 15;
 let score = 0;
 let gameStatus = "IDLE"; // IDLE, PLAYING, GAMEOVER, WIN
 
-// ИСПОЛЬЗУЕМ ВСТРОЕННЫЙ СМАЙЛИК ВМЕСТО КАРТИНКИ ДЛЯ ТЕСТА ЗАПУСКА СКРИПТА
-let isPhotoLoaded = false; 
+let isPhotoLoaded = false;
 const myPhoto = new Image();
-// Оставляем пустой, пускай сразу срабатывает аварийный режим с эмодзи самолета ✈️
-myPhoto.src = "../../assets/images/me.png?v=2";
+
+// ВНИМАНИЕ: Если на гитхабе файл называется me.jpg или me.PNG — измени расширение тут!
+myPhoto.src = "../../assets/images/me.png?v=3";
 myPhoto.onload = () => {
     isPhotoLoaded = true;
 };
