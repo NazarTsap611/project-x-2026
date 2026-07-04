@@ -9,7 +9,7 @@ const scoreBoard = document.getElementById("scoreBoard");
 const winScreen = document.getElementById("winScreen");
 
 // Настройки игры
-const targetScore = 1;
+const targetScore = 15;
 let score = 0;
 let gameStatus = "IDLE"; // IDLE, PLAYING, GAMEOVER, WIN
 const myPhoto = new Image();
