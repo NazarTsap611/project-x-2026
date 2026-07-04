@@ -27,8 +27,8 @@ myPhoto.onerror = () => {
 
 // Параметры "птички" (твоего лица)
 const bird = {
-    x: 50,
-    y: 200,
+    x: 70,
+    y: 220,
     width: 35,  // Сделали квадратным, чтобы лицо
     height: 35, // не сплющивалось
     gravity: 0.25,
@@ -39,7 +39,7 @@ const bird = {
 // Трубы (препятствия)
 let pipes = [];
 const pipeWidth = 50;
-const pipeGap = 125; // Слегка увеличили зазор, так как лицо шире самолетика
+const pipeGap = 110; // Слегка увеличили зазор, так как лицо шире самолетика
 const pipeSpeed = 2;
 let spawnTimer = 0;
 
