@@ -12,14 +12,24 @@ const winScreen = document.getElementById("winScreen");
 const targetScore = 15;
 let score = 0;
 let gameStatus = "IDLE"; // IDLE, PLAYING, GAMEOVER, WIN
+
+// Безопасная загрузка фотографии
+let isPhotoLoaded = false;
 const myPhoto = new Image();
-myPhoto.src = "/assets/images/me.png";
-// Параметры "птички" (самолетика)
+myPhoto.src = "/assets/images/me.png"; // Убедись, что на GitHub папки и файл названы именно так (маленькими буквами)
+myPhoto.onload = () => {
+    isPhotoLoaded = true;
+};
+myPhoto.onerror = () => {
+    console.error("Ошибка: Не удалось найти картинку по пути /assets/images/me.png");
+};
+
+// Параметры "птички" (твоего лица)
 const bird = {
     x: 50,
     y: 200,
-    width: 34,
-    height: 24,
+    width: 35,  // Сделали квадратным, чтобы лицо
+    height: 35, // не сплющивалось
     gravity: 0.25,
     velocity: 0,
     jump: -4.6
@@ -28,7 +38,7 @@ const bird = {
 // Трубы (препятствия)
 let pipes = [];
 const pipeWidth = 50;
-const pipeGap = 120; // Расстояние между верхней и нижней трубой (чем больше, тем легче)
+const pipeGap = 125; // Слегка увеличили зазор, так как лицо шире самолетика
 const pipeSpeed = 2;
 let spawnTimer = 0;
 
@@ -59,47 +69,48 @@ function gameOver() {
 
 function winGame() {
     gameStatus = "WIN";
-    
-    // ВАЖНО: сохраняем прогресс, открывая День 3 в главном меню
     localStorage.setItem("questLastPassedDay", 2); // Уровень 2 официально пройден    
     winScreen.style.display = "flex";
     if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 300]);
 }
 
 // Прыжок
-function makeJump() {
+function makeJump(e) {
     if (gameStatus === "PLAYING") {
         bird.velocity = bird.jump;
-        if (navigator.vibrate) navigator.vibrate(10);
+        if (navigator.vibrate) navigator.vibrate(15);
     }
 }
 
-// Управление кнопкой и тапом по экрану
+// НАДЕЖНОЕ УПРАВЛЕНИЕ ДЛЯ СМАРТФОНОВ И ПК
 startBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // Чтобы тап по кнопке не вызывал прыжок сразу
+    e.stopPropagation();
+    e.preventDefault();
     startGame();
 });
-window.addEventListener("touchstart", makeJump);
-window.addEventListener("mousedown", makeJump); // Для теста на ПК
+
+// Клик по самому холсту на мобилках вызывает прыжок (предотвращает баги браузеров)
+canvas.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // Отменяет ненужный скролл страницы при тапе
+    makeJump();
+}, { passive: false });
+
+canvas.addEventListener("mousedown", makeJump); // Для ПК
 
 // Главный игровой цикл
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (gameStatus === "PLAYING") {
-        // Физика птички
         bird.velocity += bird.gravity;
         bird.y += bird.velocity;
 
-        // Проверка падения на землю или вылета за потолок
         if (bird.y + bird.height > canvas.height || bird.y < 0) {
             gameOver();
         }
 
-        // Спавн труб
         spawnTimer++;
         if (spawnTimer % 100 === 0) {
-            // Случайная высота верхней трубы
             const minH = 50;
             const maxH = canvas.height - pipeGap - 50;
             const topHeight = Math.floor(Math.random() * (maxH - minH)) + minH;
@@ -111,20 +122,16 @@ function gameLoop() {
             });
         }
 
-        // Движение и отрисовка труб
         for (let i = pipes.length - 1; i >= 0; i--) {
             pipes[i].x -= pipeSpeed;
 
-            // Рисуем верхнюю трубу (сделаем фиолетовой в неоновом стиле)
             ctx.fillStyle = "#8be9fd";
             ctx.fillRect(pipes[i].x, 0, pipeWidth, pipes[i].topHeight);
 
-            // Рисуем нижнюю трубу
             const bottomY = pipes[i].topHeight + pipeGap;
             ctx.fillStyle = "#ff79c6";
             ctx.fillRect(pipes[i].x, bottomY, pipeWidth, canvas.height - bottomY);
 
-            // Проверка коллизий
             if (
                 bird.x + bird.width > pipes[i].x &&
                 bird.x < pipes[i].x + pipeWidth &&
@@ -133,7 +140,6 @@ function gameLoop() {
                 gameOver();
             }
 
-            // Начисление очков
             if (!pipes[i].passed && pipes[i].x + pipeWidth < bird.x) {
                 pipes[i].passed = true;
                 score++;
@@ -144,19 +150,24 @@ function gameLoop() {
                 }
             }
 
-            // Удаление труб вышедших за экран
             if (pipes[i].x + pipeWidth < 0) {
                 pipes.splice(i, 1);
             }
         }
     }
 
-    // Рисуем птичку (Самолётик / Эмодзи)
-    // Вместо сложного спрайта мы рисуем эмодзи самолета, это стильно и без багов с путями!
-    ctx.drawImage(myPhoto, bird.x, bird.y, bird.width, bird.height);
+    // ОТРИСОВКА ПТИЧКИ С ХИТРОЙ ПРОВЕРКОЙ
+    if (isPhotoLoaded) {
+        ctx.drawImage(myPhoto, bird.x, bird.y, bird.width, bird.height);
+    } else {
+        // Запасной вариант: пока фотка качается, рисуем временный кружок, чтобы игра не крашилась
+        ctx.fillStyle = "#ff79c6";
+        ctx.beginPath();
+        ctx.arc(bird.x + bird.width/2, bird.y + bird.height/2, bird.width/2, 0, Math.PI*2);
+        ctx.fill();
+    }
 
     requestAnimationFrame(gameLoop);
 }
 
-// Запуск анимации
 gameLoop();
