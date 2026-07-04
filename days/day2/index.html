@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>День 2: Flappy Trip</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <div class="game-header">
+            <h2>✈️ День 2: Турбулентность</h2>
+            <p id="scoreBoard">Очки: 0 / 15</p>
+        </div>
+
+        <!-- Игровое поле -->
+        <canvas id="gameCanvas" width="360" height="500"></canvas>
+
+        <!-- Экран старта / проигрыша -->
+        <div id="overlay" class="overlay">
+            <h3 id="overlayTitle">Тапни, чтобы лететь</h3>
+            <p id="overlaySub">Нужно набрать 15 очков, чтобы пробить облака!</p>
+            <button id="startBtn" class="game-btn">СТАРТ</button>
+        </div>
+
+<div id="winScreen" class="overlay" style="display: none; overflow-y: auto;">
+            <h3>🎉 Рубеж пройден! 15/15</h3>
+            <p id="overlaySub">Мое лицо болит!</p>
+            
+            <div class="win-photo-box">
+                <img src="/assets/images/day2_success.png" alt="Победа!">
+                <p class="win-caption">» Логи зафиксировали: уровень милоты превысил критическую отметку. Летим дальше!</p>
+            </div>
+
+            <div class="code-box">Ключ Дня 3: <b>CINEMA_MAGIC</b></div>
+            
+            <a href="../../index.html" class="back-to-hub-btn">ВЕРНУТЬСЯ В МЕНЮ</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

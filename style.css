@@ -1,0 +1,74 @@
+body {
+    background-color: #0b0f19;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.hub-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff79c6, #8be9fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hub-subtitle {
+    color: #6272a4;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.day-card {
+    background: #181f32;
+    border: 1px solid #283452;
+    border-radius: 16px;
+    padding: 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.day-card.active {
+    border-color: #ff79c6;
+    box-shadow: 0 0 15px rgba(255, 121, 198, 0.2);
+}
+
+.day-card.locked {
+    opacity: 0.5;
+    pointer-events: none; /* Нельзя кликнуть */
+}
+
+.day-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff79c6;
+}
+
+.day-card.locked .day-number {
+    color: #6272a4;
+}
+
+.day-status {
+    font-size: 12px;
+    color: #aebac7;
+    margin-top: 10px;
+}

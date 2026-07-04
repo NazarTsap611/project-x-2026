@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Протокол: Гео-Крипт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="hardcore-container">
+        <div class="matrix-bg"></div>
+        
+        <h2>LOG_RECOVERY: GEO_MATRIX</h2>
+        <p class="warning">// УРОВЕНЬ ДОСТУПА: КРИТИЧЕСКИЙ</p>
+        
+            <div class="intel-brief">
+            <p class="system-msg">» Обнаружены логи трех авиационных хабов:</p>
+            <div class="coordinates-grid">
+                <div>✈️ HUB_A: UTC +0 (WET)</div>
+                <div>✈️ HUB_B: UTC +1 (CET)</div>
+                <div>✈️ HUB_C: UTC +2 (EET)</div>
+            </div>
+            
+            <div class="logic-rules">
+                <p><b>Условие дешифрации вектора [X -> Y -> Z]:</b></p>
+                <p>1. Расположите терминалы строго с запада на восток, ориентируясь по их базовым тайм-зонам (от меньшего к большему).</p>
+                <p>2. Формат ввода: названия городов, в которых расположены эти хабы, в нижнем регистре через дефис.</p>
+            </div>
+        </div>
+
+        <div class="input-zone">
+            <input type="text" id="decryptInput" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ГОРОД-ГОРОД-ГОРОД" class="geo-input">
+            <button class="decrypt-btn" onclick="processDecryption()">ИНИЦИИРОВАТЬ ВЗЛОМ</button>
+        </div>
+
+        <div id="consoleLog" class="console-output">Ожидание ввода параметров...</div>
+    </div>
+
+<div id="secretArchive" class="secret-archive" style="display: none;">
+            <h3>📂 РАССЕКРЕЧЕННЫЕ МАТЕРИАЛЫ:</h3>
+            
+            <div class="photo-item">
+                <img src="../../assets/images/london.png" alt="Лондон">
+                <p class="photo-caption">» Лондонский перехват. Пытается утаить вкусяшку.</p>
+            </div>
+
+            <div class="photo-item">
+                <img src="../../assets/images/amsterdam.png" alt="Амстердам">
+                <p class="photo-caption">» Перехват в Амстердаме. Слишком много думает о велосипедах и тюльпанах.</p>
+            </div>
+
+            <div class="photo-item">
+                <img src="/assets/images/nicosia.png" alt="Никосия">
+                <p class="photo-caption">» Никосийский резидент. Спит вместо выполнения миссии.</p>
+            </div>
+            <a href="../../index.html" class="back-to-hub-btn">ВЕРНУТЬСЯ В МЕНЮ</a>
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>

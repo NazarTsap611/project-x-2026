@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>День 3: Сейсмограф</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="crypto-container">
+        <h2>📊 День 3: Анализ Низких Частот</h2>
+        <p class="sub-notice">// КРИТИЧЕСКИЙ УРОВЕНЬ ШУМА. ВЫДЕЛЕН СУБ-БАС (LFP)</p>
+        <p class="headphones-warn">🎧 Внимание: Без наушников или хорошей колонки вы ничего не услышите.</p>
+
+        <!-- Визуализатор баса (осциллограф) -->
+        <div class="visualizer-box">
+            <canvas id="oscCanvas" width="320" height="100"></canvas>
+        </div>
+
+        <div class="decoder-matrix">
+            <!-- Трек 1 -->
+            <div class="bass-row">
+                <button class="node-btn" onclick="playBass('audio1', this)">🔊 УЗЕЛ 1</button>
+                <audio id="audio1" src="/assets/audio/bass1.mp3" loop></audio>
+                <input type="text" id="input1" class="bass-input" placeholder="Название трека..." autocomplete="off">
+            </div>
+
+            <!-- Трек 2 -->
+            <div class="bass-row">
+                <button class="node-btn" onclick="playBass('audio2', this)">🔊 УЗЕЛ 2</button>
+                <audio id="audio2" src="/assets/audio/bass2.mp3" loop></audio>
+                <input type="text" id="input2" class="bass-input" placeholder="Место где мы его впервые услышали" autocomplete="off">
+            </div>
+
+            <!-- Трек 3 -->
+            <div class="bass-row">
+                <button class="node-btn" onclick="playBass('audio3', this)">🔊 УЗЕЛ 3</button>
+                <audio id="audio3" src="/assets/audio/bass3.mp3" loop></audio>
+                <input type="text" id="input3" class="bass-input" placeholder="Cлушай..." autocomplete="off">
+            </div>
+        </div>
+
+        <button class="submit-btn" onclick="verifySubBass()">ИНТЕГРИРОВАТЬ ЧАСТОТЫ</button>
+        <div id="terminalLog" class="terminal-log">Ожидание инициализации узлов...</div>
+
+        <!-- Победный архив -->
+        <div id="bassSuccess" class="success-screen" style="display: none;">
+            <h3>🔓 ЧАСТОТНЫЙ РЕЗОНАНС ДОСТИГНУТ</h3>
+            <div class="photo-frame">
+                <img src="/assets/images/day3_success.jpg" alt="Победа">
+                <p class="frame-text">» Узлы синхронизированы. Код перехода: BASS_LINE_UNLOCKED</p>
+            </div>
+            <a href="../../index.html" class="back-btn">ВЕРНУТЬСЯ В ХАБ</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

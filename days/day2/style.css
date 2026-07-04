@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    width: 360px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #161b22;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+h2 { font-size: 16px; color: #58a6ff; }
+#scoreBoard { font-size: 16px; font-weight: bold; color: #ff79c6; }
+
+canvas {
+    background: #21262d;
+    border-radius: 12px;
+    border: 2px solid #30363d;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    touch-action: none; /* Отключаем системный зум при тапах */
+}
+
+.overlay {
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    background: rgba(22, 27, 34, 0.9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    z-index: 10;
+}
+
+#overlayTitle { font-size: 24px; margin-bottom: 10px; color: #ff79c6; }
+#overlaySub { font-size: 14px; color: #8b949e; margin-bottom: 20px; }
+
+.game-btn {
+    background: #238636;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.game-btn:active { background: #2ea043; }
+
+.code-box {
+    margin-top: 15px;
+    background: #0d1117;
+    padding: 12px;
+    border: 1px dashed #58a6ff;
+    border-radius: 6px;
+    color: #ffcc00;
+    font-size: 16px;
+}
+
+/* Стили для экрана победы с фото */
+.win-photo-box {
+    width: 70%;
+    background: #0d1117;
+    border: 1px solid #ff79c6;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 15px 0;
+}
+
+.win-photo-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.win-caption {
+    font-size: 11px;
+    color: #8b949e;
+    margin-top: 6px;
+    line-height: 1.3;
+}
+
+/* Кнопка возврата в хаб */
+.back-to-hub-btn {
+    display: inline-block;
+    width: 100%;
+    background: linear-gradient(45deg, #ff79c6, #8be9fd);
+    color: #0d1117;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 6px;
+    margin-top: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 121, 198, 0.3);
+}
+
+.back-to-hub-btn:active {
+    transform: scale(0.98);
+}
