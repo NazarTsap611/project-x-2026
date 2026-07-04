@@ -70,25 +70,22 @@ document.addEventListener("DOMContentLoaded", () => {
 const rulesPopup = document.getElementById('rulesPopup');
     const closeRulesBtn = document.getElementById('closeRulesBtn');
 
-    // Проверяем, есть ли запись в памяти телефона
-    if (!localStorage.getItem('questRulesAccepted')) {
-        // Если записи нет — показываем окно
-        rulesPopup.style.display = 'flex';
+    if (rulesPopup && closeRulesBtn) {
+        // Проверяем, есть ли запись в памяти телефона
+        if (!localStorage.getItem('questRulesAccepted')) {
+            // Если записи нет — показываем окно
+            rulesPopup.style.display = 'flex';
+        }
+
+        closeRulesBtn.addEventListener('click', () => {
+            // Прячем окно
+            rulesPopup.style.opacity = '0';
+            rulesPopup.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+                rulesPopup.style.display = 'none';
+            }, 300);
+            
+            // ЗАПИСЫВАЕМ В ПАМЯТЬ: больше не показывать!
+            localStorage.setItem('questRulesAccepted', 'true');
+        });
     }
-
-    closeRulesBtn.addEventListener('click', () => {
-        // Прячем окно с красивым эффектом
-        rulesPopup.style.opacity = '0';
-        setTimeout(() => {
-            rulesPopup.style.display = 'none';
-        }, 300);
-        
-        // ЗАПИСЫВАЕМ В ПАМЯТЬ: больше не показывать!
-        localStorage.setItem('questRulesAccepted', 'true');
-    });
-
-// ЧИТ-КОД ДЛЯ РАЗРАБОТЧИКА (для тестов в консоли браузера):
-window.resetQuest = function() {
-    localStorage.clear();
-    location.reload();
-}
