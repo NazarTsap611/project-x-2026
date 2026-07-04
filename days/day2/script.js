@@ -16,7 +16,7 @@ let gameStatus = "IDLE"; // IDLE, PLAYING, GAMEOVER, WIN
 // Безопасная загрузка фотографии
 let isPhotoLoaded = false;
 const myPhoto = new Image();
-myPhoto.src = "/assets/images/me.png"; // Убедись, что на GitHub папки и файл названы именно так (маленькими буквами)
+myPhoto.src = "../../assets/images/me.png?v=2";
 myPhoto.onload = () => {
     isPhotoLoaded = true;
 };
