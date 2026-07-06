@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TERMINAL: RECOVER_PHOTOS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="status-line">> SYSTEM: MEMORY_SCANNER_v5.2</div>
+            <div class="status-line">> ARCHIVE_STATUS: ENCRYPTED_IMAGES // 6_SLOTS</div>
+            <hr class="terminal-hr">
+        </div>
+
+        <p class="intro-text">Изображения заблокированы временным сдвигом. Вспомни точную дату для каждого кадра (день, месяц и год), чтобы снять размытие и прочесть скрытые записи.</p>
+
+        <div class="archive-list">
+            <!-- Сектор 1 (Музыкальный вкус) -->
+            <div class="memory-card locked" id="card1">
+                <div class="image-container">
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/17.12.2017.png');"></div>
+                    <div class="lock-overlay" id="overlay1">🔒 СЕКТОР #081 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="date-input-group" id="group1">
+                        <input type="number" id="day1" placeholder="ДД" min="1" max="31">
+                        <input type="number" id="month1" placeholder="ММ" min="1" max="12">
+                        <input type="number" id="year1" placeholder="ГГГГ" min="2000" max="2027">
+                        <button onclick="unlockPhoto(1)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg1" style="display: none;">
+                        <b>Записка из прошлого:</b> Самые большие и красивые глаза в моей жизни. Я не про кота
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сектор 2 (Профессия) -->
+            <div class="memory-card locked" id="card2">
+                <div class="image-container">
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/17.02.2021.png');"></div>
+                    <div class="lock-overlay" id="overlay2">🔒 СЕКТОР #142 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="date-input-group" id="group2">
+                        <input type="number" id="day2" placeholder="ДД" min="1" max="31">
+                        <input type="number" id="month2" placeholder="ММ" min="1" max="12">
+                        <input type="number" id="year2" placeholder="ГГГГ" min="2000" max="2027">
+                        <button onclick="unlockPhoto(2)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg2" style="display: none;">
+                        <b>Записка из прошлого:</b> Хочу обратить твое внимание, что ты великолепно играешь, я лично слышал. Правда, я уже давно не слышал твоей игры на бандуре.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сектор 3 -->
+            <div class="memory-card locked" id="card3">
+                <div class="image-container">
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/05.05.2022.png');"></div>
+                    <div class="lock-overlay" id="overlay3">🔒 СЕКТОР #204 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="date-input-group" id="group3">
+                        <input type="number" id="day3" placeholder="ДД"><input type="number" id="month3" placeholder="ММ"><input type="number" id="year3" placeholder="ГГГГ">
+                        <button onclick="unlockPhoto(3)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg3" style="display: none;">
+                        <b>Записка из прошлого:</b> Я думаю ты помнишь этот день 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сектор 4 -->
+            <div class="memory-card locked" id="card4">
+                <div class="image-container">
+                    <div class="photo-blur" id="photo4" style="background-image: url('memory4.jpg');"></div>
+                    <div class="lock-overlay" id="overlay4">🔒 СЕКТОР #311 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="date-input-group" id="group4">
+                        <input type="number" id="day4" placeholder="ДД"><input type="number" id="month4" placeholder="ММ"><input type="number" id="year4" placeholder="ГГГГ">
+                        <button onclick="unlockPhoto(4)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg4" style="display: none;">
+                        <b>Записка из прошлого:</b> Здесь родилась мечта, в которой я решил поучаствовать. Незабываемый для тебя день.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сектор 5 -->
+            <div class="memory-card locked" id="card5">
+                <div class="image-container">
+                    <div class="photo-blur" id="photo5" style="background-image: url('memory5.jpg');"></div>
+                    <div class="lock-overlay" id="overlay5">🔒 СЕКТОР #418 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="cipher-text">🕵️‍♂️ <b>Подсказка:</b> [Напиши подсказку для 5-го фото]</div>
+                    <div class="date-input-group" id="group5">
+                        <input type="number" id="day5" placeholder="ДД"><input type="number" id="month5" placeholder="ММ"><input type="number" id="year5" placeholder="ГГГГ">
+                        <button onclick="unlockPhoto(5)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg5" style="display: none;">
+                        ❤️ <b>Записка из прошлого:</b> [Напиши текст воспоминания]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сектор 6 -->
+            <div class="memory-card locked" id="card6">
+                <div class="image-container">
+                    <div class="photo-blur" id="photo6" style="background-image: url('memory6.jpg');"></div>
+                    <div class="lock-overlay" id="overlay6">🔒 СЕКТОР #500 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="cipher-text">🕵️‍♂️ <b>Подсказка:</b> [Напиши подсказку для 6-го фото]</div>
+                    <div class="date-input-group" id="group6">
+                        <input type="number" id="day6" placeholder="ДД"><input type="number" id="month6" placeholder="ММ"><input type="number" id="year6" placeholder="ГГГГ">
+                        <button onclick="unlockPhoto(6)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg6" style="display: none;">
+                        ❤️ <b>Записка из прошлого:</b> [Напиши текст воспоминания]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="finalSection" style="display: none; margin-top: 30px;">
+            <button class="finish-btn" onclick="finishDay5()">ЗАВЕРШИТЬ СИНХРОНИЗАЦИЮ</button>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>🔐 АРХИВ ПОЛНОСТЬЮ ВОССТАНОВЛЕН</h2>
+            <p>Все 6 кадров нашей хроники успешно расшифрованы. Спасибо за то, что помнишь каждую деталь нашей истории.</p>
+            <div class="code-box">Код Дня 5: FULL_CHRONOLOGY_RESTORED_2026</div>
+            <button onclick="goBackHub()">ВЕРНУТЬСЯ В ГЛАВНОЕ МЕНЮ</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

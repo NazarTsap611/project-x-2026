@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>День 4: Лондонский Колорист</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="burnOverlay" class="burn-screen" style="display: none;">💥 ВОЛОС СОЖЖЕН!<br>Срочно смываем...</div>
+
+    <div class="quest-container">
+        <h2>🎨 День 4: Лондонский Лаборант</h2>
+        <p class="instruction">Лондон диктует тренды. Твоя задача — воссоздать секретный оттенок. Собери 3 базовых пигмента из окружения и прояви формулу.</p>
+        
+<button id="hintBtn" onclick="toggleHint()" style="background: transparent; color: #8be9fd; border: 1px dashed #8be9fd; padding: 6px 12px; font-size: 12px; margin-top: 5px; width: auto; box-shadow: none;">❓ Подсказка технолога</button>
+    
+    <div id="hintText" style="display: none; background: #181f32; padding: 12px; border-radius: 8px; margin-top: 10px; font-size: 13px; text-align: left; border: 1px solid #6272a4; line-height: 1.4;">
+        💡 <b>Как собрать этот цвет?</b><br>
+        Помнишь правила колористики? «Пыльная роза» — это сложный нейтрально-теплый оттенок. Чтобы его замешать, тебе понадобятся три основы. Оглянись вокруг в Лондоне и найди:<br>
+        1. 🦩 <b>Что-то розовое или красное</b> (например, телефонная будка или автобус) — для направления тона.<br>
+        2. ☕ <b>Что-то бежевое, коричневое или цвет лондонского кирпича</b> — для создания мягкой базы.<br>
+        3. ☁️ <b>Что-то нейтральное (серое, белое или асфальт)</b> — чтобы приглушить яркость и создать тот самый "пыльный" эффект.<br>
+        <i>Экспериментируй! Если пропорции не сойдутся, ты всегда можешь переснять любой из пигментов.</i>
+    </div>
+
+        <div class="target-box">
+            <span class="box-title">Требуемый оттенок (Тонирование):</span>
+            <div class="target-color-wrapper">
+                <div class="target-color" id="targetColorBox"></div>
+                <div class="blur-overlay" id="blurOverlay">🔒 Проявите цвет оксидом</div>
+            </div>
+        </div>
+
+        <div class="oxide-selector" id="oxideSection">
+            <p class="section-title">Выбери процент Оксида для проявления:</p>
+            <div class="oxide-buttons">
+                <button onclick="selectOxide(3)">3%</button>
+                <button onclick="selectOxide(6)">6%</button>
+                <button onclick="selectOxide(9)">9%</button>
+            </div>
+        </div>
+
+        <div class="slots-container" id="slotsSection" style="display: none;">
+            <div class="color-slot" id="slot1" onclick="openCamera(1)">
+                <div class="slot-preview" id="preview1">📸</div>
+                <span>Пигмент А</span>
+            </div>
+            <div class="color-slot" id="slot2" onclick="openCamera(2)">
+                <div class="slot-preview" id="preview2">📸</div>
+                <span>Пигмент B</span>
+            </div>
+            <div class="color-slot" id="slot3" onclick="openCamera(3)">
+                <div class="slot-preview" id="preview3">📸</div>
+                <span>Пигмент C</span>
+            </div>
+        </div>
+
+        <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display: none;">
+
+        <div id="cropperModal" class="modal">
+            <div class="modal-content">
+                <h3>Коснись экрана, чтобы забрать пигмент:</h3>
+                <canvas id="canvasPreview"></canvas>
+                <button class="cancel-btn" onclick="closeModal()">Отмена</button>
+            </div>
+        </div>
+
+        <div id="labContainer" style="display: none; margin-top: 20px;">
+            <div class="slider-group">
+                <h3>🧪 Настройка пропорций микса:</h3>
+                
+                <label>Доля Пигмента А: <span id="val1">33%</span></label>
+                <input type="range" id="mix1" min="0" max="100" value="33" oninput="updateMix()">
+                
+                <label>Доля Пигмента B: <span id="val2">33%</span></label>
+                <input type="range" id="mix2" min="0" max="100" value="33" oninput="updateMix()">
+                
+                <label>Доля Пигмента C: <span id="val3">34%</span></label>
+                <input type="range" id="mix3" min="0" max="100" value="34" oninput="updateMix()">
+            </div>
+
+            <button id="checkFormulaBtn" class="submit-mix-btn" onclick="checkResult()">НАНЕСТИ КРАСКУ</button>
+        </div>
+    </div>
+
+<div id="successModal" class="modal" style="display: none; background: rgba(11, 15, 25, 0.97);">
+        <div class="modal-content" style="background: #181f32; border: 2px solid #8be9fd; padding: 30px 20px; border-radius: 16px; box-shadow: 0 0 30px rgba(139, 233, 253, 0.4);">
+            <h2 style="color: #8be9fd; margin-bottom: 10px;">🇬🇧 СЕРТИФИКАТ КОЛОРИСТА</h2>
+            <p style="font-size: 16px; color: #ffffff; font-weight: bold; margin-bottom: 20px;">Британская Академия Волос в шоке!</p>
+            
+            <div style="text-align: left; font-size: 14px; color: #aebac7; line-height: 1.5; background: #0b0f19; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #ff79c6;">
+                📜 Настоящим документом подтверждается, что ты официально признана <b>Магистром Пыльной Розы 👑</b> и Королевой лондонского оксида!<br><br>
+                <b>Тебе официально разрешается:</b><br>
+                • Смешивать краску глазами на расстоянии;<br>
+                • Перекрасить Биг-Бен в пепельный блонд;<br>
+                <span style="color: #ff79c6; font-weight: bold; font-family: monospace;">Про професию</span>
+                <b>Еще до знакомства с тобой я знал, что парикмахерское искусство — это сложно. Теперь я в этом убежден на все 100%. Во-первых, моё личное мнение о тебе — что ты выдающийся мастер с огромным опытом и багажом знаний. И я благодарен тебе, что ты пытаешься меня научить хоть чему-то. Во-вторых, я впервые встречаю настолько горячего мастера!</b>
+            </div>
+            
+            <button onclick="goBackToHub()" style="background: linear-gradient(45deg, #8be9fd, #ff79c6); color: #0b0f19; font-size: 16px; padding: 14px;">Забрать корону и вернуться 👑</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
