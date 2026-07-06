@@ -102,7 +102,7 @@ function updateMix() {
     let b = Math.round(colors[1].b * p1 + colors[2].b * p2 + colors[3].b * p3);
     
     // МЕНЯЕМ ФОН ВСЕГО БОДИ (с прозрачностью, чтобы не перекрыть текст)
-    document.body.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+    document.body.style.background = `rgba(${r}, ${g}, ${b}, 0.75)`;
     document.body.dataset.currentMixRgb = JSON.stringify({r, g, b});
 }
 

@@ -6,8 +6,7 @@ body {
     justify-content: center;
     margin: 0;
     padding: 15px;
-    transition: background 0.5s ease; /* ВАУ-эффект: плавное окрашивание фона всего сайта */
-}
+    transition: background 0.5s ease-in-out;}
 
 .quest-container {
     width: 100%;
