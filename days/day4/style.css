@@ -99,23 +99,47 @@ h2 { color: #ff79c6; margin-top: 0; }
     transition: background 0.3s;
 }
 
-/* Модалка с камерой */
 .modal {
-    display: none;
+    display: none; /* JS заменит на flex при открытии */
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
+    top: 0; 
+    left: 0; 
+    height: 100vh;
     background: rgba(11, 15, 25, 0.98);
     z-index: 10000;
+    
+    /* Оставляем здесь только позиционирование контента */
     justify-content: center;
     align-items: center;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 340px; /* Немного увеличили, чтобы канвасу было просторнее */
+    background: #181f32; 
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px solid #ff79c6;
+    box-shadow: 0 0 30px rgba(255, 121, 198, 0.2);
+    
+    /* Вертикальный стек элементов внутри карточки */
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    margin: auto; 
+    box-sizing: border-box;
 }
 
 canvas {
-    width: 90%;
-    max-height: 65vh;
+    width: 100%; /* Теперь он занимает всю ширину модалки (с учетом паддингов) */
+    max-height: 50vh; /* Ограничили по высоте, чтобы кнопка «Отмена» не улетала вниз */
     border-radius: 12px;
     box-shadow: 0 0 25px rgba(255,121,198,0.4);
+    margin: 15px 0; /* Аккуратные отступы сверху и снизу */
+    box-sizing: border-box;
 }
 
 .slider-group {
