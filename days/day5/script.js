@@ -1,28 +1,27 @@
-// НАСТРОЙКА ДАТ ДЛЯ КАЖДОЙ ИЗ 6 ФОТОГРАФИЙ
-// Впиши сюда точные числа (день, месяц, год)
+// НАСТРОЙКА ДАТ ДЛЯ КАЖДОЙ ИЗ 8 ФОТОГРАФИЙ
 const correctDates = {
-    1: { d: 17, m: 12,  y: 2017 }, // Пример: 14 февраля 2024
-    2: { d: 17,  m: 2,  y: 2021 }, // Пример: 5 июля 2024
+    1: { d: 17, m: 12, y: 2017 }, 
+    2: { d: 17, m: 2,  y: 2021 }, 
     3: { d: 5,  m: 5,  y: 2022 }, 
-    4: { d: 16, m: 2, y: 2024 }, 
-    5: { d: 24,  m: 1,  y: 2025 }, 
-    6: { d: 29, m: 10,  y: 2025 },
-    7: { d: 3, m: 1,  y: 2026 },  
+    4: { d: 16, m: 2,  y: 2024 }, 
+    5: { d: 24, m: 1,  y: 2025 }, 
+    6: { d: 29, m: 10, y: 2025 },
+    7: { d: 3,  m: 1,  y: 2026 },  
     8: { d: 25, m: 2,  y: 2026 }  
 };
 
-// Хранилище статуса взлома для 6 карточек
+// Хранилище статуса взлома для всех 8 карточек
 let statusList = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false };
 
 function unlockPhoto(id) {
-    // Получаем значения из трех полей ввода
+    // Получаем значения из трех полей ввода конкретной карточки
     const inputDay = parseInt(document.getElementById(`day${id}`).value);
     const inputMonth = parseInt(document.getElementById(`month${id}`).value);
     const inputYear = parseInt(document.getElementById(`year${id}`).value);
     
     const target = correctDates[id];
     
-    // Строгая проверка всех трех параметров даты
+    // Строгая проверка даты
     if (inputDay === target.d && inputMonth === target.m && inputYear === target.y) {
         statusList[id] = true;
         
@@ -31,7 +30,7 @@ function unlockPhoto(id) {
         card.classList.remove('locked');
         card.classList.add('unlocked');
         
-        // Показываем секретную записку от тебя
+        // Показываем секретную записку
         document.getElementById(`msg${id}`).style.display = 'block';
         
         checkFinalStatus();
@@ -41,7 +40,7 @@ function unlockPhoto(id) {
 }
 
 function checkFinalStatus() {
-    // Проверяем, что ВСЕ 6 карточек успешно открыты
+    // Проверяем, что абсолютно ВСЕ 8 карточек успешно открыты
     const allUnlocked = Object.values(statusList).every(status => status === true);
     
     if (allUnlocked) {
