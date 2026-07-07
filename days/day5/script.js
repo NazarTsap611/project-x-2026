@@ -50,7 +50,7 @@ function checkFinalStatus() {
 
 function finishDay5() {
     document.getElementById('successModal').style.display = 'flex';
-    localStorage.setItem('day5_passed', 'true');
+    localStorage.setItem("questLastPassedDay", 5);
 }
 
 function goBackHub() {
