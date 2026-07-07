@@ -133,7 +133,8 @@ function checkResult() {
     // МЫ ТУТ: Поставили 65 вместо 45. Это дает приятный небольшой разброс!
     if (distance < 65) {
         document.getElementById('successModal').style.display = 'flex';
-        localStorage.setItem('day4_passed', 'true');
+        localStorage.setItem("questLastPassedDay", 4);
+
     } else {
         alert("Неа... Британские стилисты качают головой. Оттенок ушел не туда. Поиграй с ползунками или пересними пигменты!");
     }
