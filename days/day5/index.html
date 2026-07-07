@@ -75,7 +75,7 @@
             <!-- Сектор 4 -->
             <div class="memory-card locked" id="card4">
                 <div class="image-container">
-                    <div class="photo-blur" id="photo4" style="background-image: url('memory4.jpg');"></div>
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/16.02.2024.png');"></div>
                     <div class="lock-overlay" id="overlay4">🔒 СЕКТОР #311 БЛОКИРОВАН</div>
                 </div>
                 <div class="card-controls">
@@ -92,39 +92,68 @@
             <!-- Сектор 5 -->
             <div class="memory-card locked" id="card5">
                 <div class="image-container">
-                    <div class="photo-blur" id="photo5" style="background-image: url('memory5.jpg');"></div>
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/24.01.2025.png');"></div>
                     <div class="lock-overlay" id="overlay5">🔒 СЕКТОР #418 БЛОКИРОВАН</div>
                 </div>
                 <div class="card-controls">
-                    <div class="cipher-text">🕵️‍♂️ <b>Подсказка:</b> [Напиши подсказку для 5-го фото]</div>
                     <div class="date-input-group" id="group5">
                         <input type="number" id="day5" placeholder="ДД"><input type="number" id="month5" placeholder="ММ"><input type="number" id="year5" placeholder="ГГГГ">
                         <button onclick="unlockPhoto(5)">ВЗЛОМ</button>
                     </div>
                     <div class="hidden-message" id="msg5" style="display: none;">
-                        ❤️ <b>Записка из прошлого:</b> [Напиши текст воспоминания]
-                    </div>
+                        ❤️ <b>Записка из прошлого:</b>В этот день случилось нечто особенное для меня. Я наконец нашел мою любовь, с которой я хочу идти по жизни.
                 </div>
             </div>
 
             <!-- Сектор 6 -->
             <div class="memory-card locked" id="card6">
                 <div class="image-container">
-                    <div class="photo-blur" id="photo6" style="background-image: url('memory6.jpg');"></div>
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/29.10.2025.png');"></div>
                     <div class="lock-overlay" id="overlay6">🔒 СЕКТОР #500 БЛОКИРОВАН</div>
                 </div>
                 <div class="card-controls">
-                    <div class="cipher-text">🕵️‍♂️ <b>Подсказка:</b> [Напиши подсказку для 6-го фото]</div>
                     <div class="date-input-group" id="group6">
                         <input type="number" id="day6" placeholder="ДД"><input type="number" id="month6" placeholder="ММ"><input type="number" id="year6" placeholder="ГГГГ">
                         <button onclick="unlockPhoto(6)">ВЗЛОМ</button>
                     </div>
                     <div class="hidden-message" id="msg6" style="display: none;">
-                        ❤️ <b>Записка из прошлого:</b> [Напиши текст воспоминания]
-                    </div>
-                </div>
+                        ❤️ <b>Записка из прошлого:</b> В этот день ты была особенно красива. Я никогда не забуду, как солнечные лучи играли с твоими волосами и как на тебе хорошо сидел костюм.
             </div>
         </div>
+
+                    <!-- Сектор 7 -->
+            <div class="memory-card locked" id="card7">
+                <div class="image-container">
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/3.01.2026.png');"></div>
+                    <div class="lock-overlay" id="overlay5">🔒 СЕКТОР #800 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                    <div class="date-input-group" id="group5">
+                        <input type="number" id="day7" placeholder="ДД"><input type="number" id="month7" placeholder="ММ"><input type="number" id="year5" placeholder="ГГГГ">
+                        <button onclick="unlockPhoto(7)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg7" style="display: none;">
+                        ❤️ <b>Записка из прошлого:</b> 8 марта!!!! Моя девушка обязана получать цветы.
+                </div>
+            </div>
+
+                                <!-- Сектор 8 -->
+            <div class="memory-card locked" id="card8">
+                <div class="image-container">
+                <div class="photo-blur" id="photo1" style="background-image: url('../../assets/images/25.02.2026.png');"></div>
+                    <div class="lock-overlay" id="overlay5">🔒 СЕКТОР #800 БЛОКИРОВАН</div>
+                </div>
+                <div class="card-controls">
+                <div class="cipher-text">🕵️‍♂️ <b>Подсказка:</b> Я не люблю этот день</div>
+
+                    <div class="date-input-group" id="group5">
+                        <input type="number" id="day8" placeholder="ДД"><input type="number" id="month7" placeholder="ММ"><input type="number" id="year5" placeholder="ГГГГ">
+                        <button onclick="unlockPhoto(8)">ВЗЛОМ</button>
+                    </div>
+                    <div class="hidden-message" id="msg7" style="display: none;">
+                        ❤️ <b>Записка из прошлого:</b> Мне грустно осознавать, что в этом году мы расставались на 2 с половиной месяца, и это за полгода. Я надеюсь, мы прошли проверку расстоянием на этот год и следующий.
+                </div>
+            </div>
 
         <div id="finalSection" style="display: none; margin-top: 30px;">
             <button class="finish-btn" onclick="finishDay5()">ЗАВЕРШИТЬ СИНХРОНИЗАЦИЮ</button>
@@ -134,8 +163,8 @@
     <div id="successModal" class="modal" style="display: none;">
         <div class="modal-content">
             <h2>🔐 АРХИВ ПОЛНОСТЬЮ ВОССТАНОВЛЕН</h2>
-            <p>Все 6 кадров нашей хроники успешно расшифрованы. Спасибо за то, что помнишь каждую деталь нашей истории.</p>
-            <div class="code-box">Код Дня 5: FULL_CHRONOLOGY_RESTORED_2026</div>
+            <p>Все 8 кадров нашей хроники успешно расшифрованы.</p>
+            <div class="code-box">Готова идти даьше ? (я не про квест)</div>
             <button onclick="goBackHub()">ВЕРНУТЬСЯ В ГЛАВНОЕ МЕНЮ</button>
         </div>
     </div>

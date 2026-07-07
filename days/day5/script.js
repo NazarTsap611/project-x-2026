@@ -6,11 +6,13 @@ const correctDates = {
     3: { d: 5,  m: 5,  y: 2022 }, 
     4: { d: 16, m: 2, y: 2024 }, 
     5: { d: 8,  m: 3,  y: 2025 }, 
-    6: { d: 18, m: 4,  y: 2025 }  
+    6: { d: 18, m: 4,  y: 2025 },
+    7: { d: 18, m: 4,  y: 2025 },  
+    8: { d: 18, m: 4,  y: 2025 }  
 };
 
 // Хранилище статуса взлома для 6 карточек
-let statusList = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false };
+let statusList = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false };
 
 function unlockPhoto(id) {
     // Получаем значения из трех полей ввода
