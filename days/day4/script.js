@@ -6,6 +6,7 @@ const targetColor = { r: 184, g: 107, b: 123 };
 
 // Шаг 1: Выбор Оксида
 function selectOxide(percentage) {
+    localStorage.setItem("questLastPassedDay", 4);
     if (percentage === 6) { // Правильный оксид — 6%
         alert("Оксид 6% принят. Реакция пошла! Оттенок-цель проявлен.");
         document.getElementById('blurOverlay').style.opacity = '0';
