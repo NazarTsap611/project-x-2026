@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>День 6 — Нейросеть Истории</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cyber-grid"></div>
+
+    <div class="game-container" id="gameArea">
+        <svg id="connectionsLayer"></svg>
+        <div id="nodesContainer"></div>
+    </div>
+
+    <div class="ui-layer">
+        <h2>Синхронизация памяти</h2>
+        <p id="statusText">Установи связи между узлами. Остерегайся системных сбросов.</p>
+        
+        <div class="strikes-container">
+            Сбои сети: <span id="strike1" class="strike">O</span> <span id="strike2" class="strike">O</span> <span id="strike3" class="strike">O</span>
+        </div>
+
+        <div id="memoryCard" class="memory-card">
+            <div class="card-content" id="memoryText"></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
