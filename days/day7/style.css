@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background-color: #0a0a0a;
+    font-family: 'Courier Prime', monospace; /* Шрифт печатной машинки */
+    color: #e0e0e0;
+    overflow: hidden;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Фон с легкой виньеткой и текстурой шума */
+.mind-palace-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000000 80%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.main-container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 480px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sherlock-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-align: center;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.divider {
+    height: 1px;
+    width: 60%;
+    background: linear-gradient(90deg, transparent, #888, transparent);
+    margin: 0 auto 20px;
+}
+
+/* Доска дедукции */
+.deduction-board {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid #333;
+    padding: 30px 25px;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(255,255,255,0.02);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.deduction-board.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    position: absolute;
+}
+
+.clue-container {
+    text-align: center;
+    margin-bottom: 25px;
+    min-height: 80px;
+}
+
+.case-number {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 2px;
+    margin: 0 0 10px;
+}
+
+.riddle-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5;
+    color: #d4af37; /* Легкий золотой оттенок для загадок */
+    margin: 0;
+}
+
+/* Собранные улики */
+.evidence-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    min-height: 30px;
+}
+
+.evidence-tag {
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid #555;
+    color: #aaa;
+    text-decoration: line-through; /* Стиль "дело закрыто" */
+    animation: fadeIn 0.5s forwards;
+}
+.evidence-tag.final {
+    color: #fff;
+    border-color: #fff;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Ввод */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-section input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #666;
+    color: #fff;
+    font-family: 'Courier Prime', monospace;
+    font-size: 16px;
+    padding: 8px 5px;
+    text-align: center;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: border-color 0.3s;
+}
+
+.input-section input:focus {
+    border-bottom-color: #d4af37;
+}
+
+.input-section button {
+    background: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 10px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+.input-section button:hover {
+    background: #d4af37;
+    color: #000;
+}
+
+.error-msg {
+    text-align: center;
+    font-size: 12px;
+    color: #cc0000; /* Цвет крови/красных чернил */
+    min-height: 16px;
+}
+
+/* Сцена с таблетками (скрыта по умолчанию) */
+.study-in-pink {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid #444;
+    padding: 30px 25px;
+    border-radius: 4px;
+    box-shadow: 0 10px 50px rgba(0,0,0,0.9);
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+    transition: opacity 1s, transform 1s;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+}
+
+.study-in-pink.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    position: relative;
+    top: 0; left: 0;
+}
+
+.final-speech {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+
+.pills-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.pill-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 15px 10px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.pill-icon { font-size: 24px; filter: grayscale(0.5); transition: filter 0.3s; }
+
+.pill-btn small {
+    font-size: 10px;
+    color: #777;
+    font-family: sans-serif;
+}
+
+.red-pill:hover { border-color: #cc0000; box-shadow: inset 0 0 20px rgba(204,0,0,0.2); }
+.red-pill:hover .pill-icon { filter: hue-rotate(320deg) saturate(3); }
+
+.blue-pill:hover { border-color: #444; background: #111; }
+
+.shake { animation: shakeError 0.4s; }
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

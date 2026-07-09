@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>День 7 — Чертоги Разума</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mind-palace-bg"></div>
+
+    <div class="main-container">
+        <div class="deduction-board" id="deductionBoard">
+            <h1 class="sherlock-title">ЧЕРТОГИ РАЗУМА</h1>
+            <div class="divider"></div>
+            
+            <div class="clue-container" id="clueContainer">
+                <p class="case-number" id="caseNumber">УЛИКА №1</p>
+                <p class="riddle-text" id="riddleText">Загрузка воспоминаний...</p>
+            </div>
+
+            <div class="evidence-list" id="evidenceList"></div>
+            
+            <div class="input-section" id="inputSection">
+                <input type="text" id="deductionInput" placeholder="Введите вывод..." autocomplete="off">
+                <button id="submitDeduction">ДЕДУКЦИЯ</button>
+                <div id="errorMsg" class="error-msg"></div>
+            </div>
+        </div>
+
+        <div class="study-in-pink" id="studyInPink">
+            <h2 class="sherlock-title">ИГРА НА ВЫЖИВАНИЕ</h2>
+            <div class="divider"></div>
+            <p class="final-speech">
+                Дедукция завершена. Выводы сделаны. Остался последний шаг.<br><br>
+                Перед тобой два флакона. Это не матрица, это игра разума. Одна таблетка вернет тебя в обычную жизнь и завершит квест. Другая - это подстава. Что выберешь ты?
+            </p>
+            
+            <div class="pills-container">
+                <button class="pill-btn red-pill" id="redPill">
+                    <div class="pill-icon">💊</div>
+                    ПРАВЫЙ ФЛАКОН
+                    <small>Что это ?</small>
+                </button>
+                
+                <button class="pill-btn blue-pill" id="bluePill">
+                    <div class="pill-icon">💊</div>
+                    ЛЕВЫЙ ФЛАКОН
+                    <small>Финал</small>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
