@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 День: Вне времени</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace; /* Шрифт печатной машинки */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #text-container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            min-height: 200px;
+        }
+
+        .fade-text {
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            margin-bottom: 15px;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+
+        #revealBtn {
+            margin-top: 40px;
+            padding: 15px 30px;
+            background: transparent;
+            color: #d4af37; /* Золотой цвет, как в 7 дне */
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 1.5s ease;
+            pointer-events: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        #revealBtn.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        #revealBtn:hover {
+            background: #d4af37;
+            color: #050505;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Контейнер для видео, скрыт по умолчанию */
+        #video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 3s ease-in-out; /* Очень плавное появление */
+        }
+
+        #video-container.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        video {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="text-container">
+        <!-- Текст будет появляться здесь через JS -->
+    </div>
+
+    <button id="revealBtn">Сократить расстояние</button>
+
+    <div id="video-container">
+        <!-- Убедись, что название файла видео правильное -->
+        <video id="finalVideo" controls>
+            <source src="final_video.mp4" type="video/mp4">
+            Твой браузер не поддерживает видео.
+        </video>
+    </div>
+
+    <script>
+        // Тот самый глубокий текст
+        const phrases = [
+            "Ты распутала все узлы связи.",
+            "Разгадала все мои шифры.",
+            "Но правда в том, что в этом дне нет загадок.",
+            "Мы можем планировать дожить до 150 лет...",
+            "Но какой в этом смысл, если эти годы мы проводим не вместе?",
+            "Говорят, в неделе всего 7 дней.",
+            "Но я создал этот восьмой.",
+            "Только для нас."
+        ];
+
+        const textContainer = document.getElementById('text-container');
+        const revealBtn = document.getElementById('revealBtn');
+        const videoContainer = document.getElementById('video-container');
+        const finalVideo = document.getElementById('finalVideo');
+
+        let currentPhrase = 0;
+
+        // Функция для поочередного появления текста
+        function showNextPhrase() {
+            if (currentPhrase < phrases.length) {
+                const p = document.createElement('p');
+                p.className = 'fade-text';
+                p.innerText = phrases[currentPhrase];
+                textContainer.appendChild(p);
+
+                // Даем браузеру долю секунды на отрисовку, затем включаем opacity
+                setTimeout(() => {
+                    p.classList.add('visible');
+                }, 100);
+
+                currentPhrase++;
+                
+                // Задержка перед следующей фразой (3.5 секунды на чтение)
+                setTimeout(showNextPhrase, 3500);
+            } else {
+                // Когда текст закончился, показываем кнопку
+                setTimeout(() => {
+                    revealBtn.classList.add('show');
+                }, 2000);
+            }
+        }
+
+        // Запуск анимации текста через секунду после открытия страницы
+        setTimeout(showNextPhrase, 1000);
+
+        // Логика нажатия на кнопку
+        revealBtn.addEventListener('click', () => {
+            // Растворяем текст и кнопку
+            textContainer.style.transition = "opacity 2s";
+            textContainer.style.opacity = "0";
+            revealBtn.style.opacity = "0";
+
+            // Показываем видео
+            setTimeout(() => {
+                videoContainer.classList.add('active');
+                finalVideo.play(); // Автоматически запускаем видео
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
